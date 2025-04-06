@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skincare & Fitness Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#3498db">
+</head>
+<body>
+    <header>
+        <h1>Tracker</h1>
+        <nav>
+            
+            <button id="workoutTab">Workout</button>
+            <button id="nutritionTab">Nutrition</button>
+            <button id="skincareTab" class="active">Skincare</button>
+            <button id="historyTab">History</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Skincare Tracking Section -->
+        <section id="skincareSection" class="active-section">
+            <h2>Skincare Routine <span id="currentDate"></span></h2>
+            
+            <div class="routine-toggle">
+                <button id="morningBtn" class="active">Morning</button>
+                <button id="eveningBtn">Evening</button>
+            </div>
+            
+            <div id="morningRoutine" class="routine active-routine">
+                <div class="routine-item">
+                    
+                    <label for="amCleanser">Cleanser</label>
+                    <select id="amCleanserProduct">
+                        <option>CeraVe Hydrating</option>
+                        <option>Cetaphil Gentle</option>
+                        <option>Other</option>
+                    </select>
+                    <input type="checkbox" id="amCleanser">
+                </div>
+                
+                <div class="routine-item">
+                  
+                    <label for="amMoisturizer">Moisturizer</label>
+                    <select id="amMoisturizerProduct">
+                        <option>Neutrogena Hydro Boost</option>
+                        <option>CeraVe Daily</option>
+                        <option>Other</option>
+                    </select>
+                    <input type="checkbox" id="amMoisturizer">
+                </div>
+                
+                <div class="routine-item">
+                    
+                    <label for="amSunscreen">Sunscreen</label>
+                    <select id="amSunscreenProduct">
+                        <option>La Roche-Posay</option>
+                        <option>Neutrogena Ultra Sheer</option>
+                        <option>Other</option>
+                    </select>
+                    <input type="checkbox" id="amSunscreen">
+                </div>
+            </div>
+            
+            <div id="eveningRoutine" class="routine">
+                <div class="routine-item">
+                   
+                    <label for="pmCleanser">Cleanser</label>
+                    <select id="pmCleanserProduct">
+                        <option>CeraVe Hydrating</option>
+                        <option>Cetaphil Gentle</option>
+                        <option>Other</option>
+                    </select>
+                    <input type="checkbox" id="pmCleanser">
+                </div>
+                
+                <div class="routine-item">
+                    
+                    <label for="pmExfoliant">Exfoliant (Mon/Thu)</label>
+                    <select id="pmExfoliantProduct">
+                        <option>Paula's Choice BHA</option>
+                        <option>Jack Black Face Buff</option>
+                        <option>Other</option>
+                    </select>
+                    <input type="checkbox" id="pmExfoliant">
+                </div>
+                
+                <div class="routine-item">
+                  
+                    <label for="pmSerum">Serum</label>
+                    <select id="pmSerumProduct">
+                        <option>The Ordinary Niacinamide</option>
+                        <option>The Ordinary Hyaluronic Acid</option>
+                        <option>Other</option>
+                    </select>
+                    <input type="checkbox" id="pmSerum">
+                </div>
+                
+                <div class="routine-item">
+                   
+                    <label for="pmMoisturizer">Moisturizer</label>
+                    <select id="pmMoisturizerProduct">
+                        <option>CeraVe PM</option>
+                        <option>Kiehl's Ultra Facial</option>
+                        <option>Other</option>
+                    </select>
+                    <input type="checkbox" id="pmMoisturizer">
+                </div>
+            </div>
+            
+            <div class="skin-assessment">
+                <h3>Skin Condition</h3>
+                <div class="rating-item">
+                    <label for="oiliness">Oiliness (1-5):</label>
+                    <input type="range" id="oiliness" min="1" max="5" value="3">
+                    <span id="oilinessValue">3</span>
+                </div>
+                <div class="rating-item">
+                    <label for="dryness">Dryness (1-5):</label>
+                    <input type="range" id="dryness" min="1" max="5" value="3">
+                    <span id="drynessValue">3</span>
+                </div>
+                <div class="rating-item">
+                    <label for="redness">Redness (1-5):</label>
+                    <input type="range" id="redness" min="1" max="5" value="2">
+                    <span id="rednessValue">2</span>
+                </div>
+                <div class="rating-item">
+                    <label for="overall">Overall (1-5):</label>
+                    <input type="range" id="overall" min="1" max="5" value="3">
+                    <span id="overallValue">3</span>
+                </div>
+            </div>
+            
+            <button id="saveSkincare" class="save-btn">Save Today's Routine</button>
+        </section>
+
+        <!-- Workout Section -->
+        <section id="workoutSection" class="hidden-section">
+            <h2>Workout Tracker <span id="workoutDate"></span></h2>
+            <div class="daily-stats">
+                <div class="weight-tracker">
+                    <label for="dailyWeight">Today's Weight (kg):</label>
+                    <input type="number" id="dailyWeight" step="0.1" min="0" placeholder="Enter your weight">
+                </div>
+            </div>
+            
+            <div class="workout-type">
+                <label for="workoutTypeSelect">Workout Type:</label>
+                <select id="workoutTypeSelect">
+                    <option>Chest & Triceps</option>
+                    <option>Back & Biceps</option>
+                    <option>Legs</option>
+                    <option>Shoulders & Abs</option>
+                    <option>Arms</option>
+                    <option>HIIT/Cardio</option>
+                    <option>Rest Day</option>
+                </select>
+            </div>
+            
+            <div id="exerciseContainer">
+                <div class="exercise-row header-row">
+                    <div class="exercise-name">Exercise</div>
+                    <div class="set">Set 1</div>
+                    <div class="set">Set 2</div>
+                    <div class="set">Set 3</div>
+                    <div class="set">Set 4</div>
+                </div>
+                
+                <div class="exercise-row">
+                    <div class="exercise-name">
+                        <input type="text" placeholder="Exercise name">
+                    </div>
+                    <div class="set">
+                        <input type="text" placeholder="W" class="weight-input">
+                        <input type="text" placeholder="R" class="rep-input">
+                    </div>
+                    <div class="set">
+                        <input type="text" placeholder="W" class="weight-input">
+                        <input type="text" placeholder="R" class="rep-input">
+                    </div>
+                    <div class="set">
+                        <input type="text" placeholder="W" class="weight-input">
+                        <input type="text" placeholder="R" class="rep-input">
+                    </div>
+                    <div class="set">
+                        <input type="text" placeholder="W" class="weight-input">
+                        <input type="text" placeholder="R" class="rep-input">
+                    </div>
+                </div>
+            </div>
+            
+            <button id="addExercise" class="add-btn">Add Exercise</button>
+            
+            <div class="cardio-section">
+                <h3>Cardio</h3>
+                <div class="form-group">
+                    <label for="cardioType">Type:</label>
+                    <input type="text" id="cardioType">
+                </div>
+                <div class="form-group">
+                    <label for="cardioDuration">Duration (min):</label>
+                    <input type="number" id="cardioDuration">
+                </div>
+                <div class="form-group">
+                    <label for="cardioIntensity">Intensity (1-10):</label>
+                    <input type="range" id="cardioIntensity" min="1" max="10" value="5">
+                    <span id="intensityValue">5</span>
+                </div>
+            </div>
+            
+            <button id="saveWorkout" class="save-btn">Save Workout</button>
+        </section>
+
+        <!-- Nutrition Section -->
+        <section id="nutritionSection" class="hidden-section">
+            <h2>Nutrition Log <span id="nutritionDate"></span></h2>
+            
+            <div class="daily-summary">
+                <div class="macro-summary">
+                    <div class="macro-item">
+                        <div class="macro-label">Calories</div>
+                        <div id="calorieTotal" class="macro-value">0</div>
+                        <div class="macro-target">/ 2000</div>
+                    </div>
+                    <div class="macro-item">
+                        <div class="macro-label">Protein</div>
+                        <div id="proteinTotal" class="macro-value">0</div>
+                        <div class="macro-target">/ 155g</div>
+                    </div>
+                    <div class="macro-item">
+                        <div class="macro-label">Carbs</div>
+                        <div id="carbTotal" class="macro-value">0</div>
+                        <div class="macro-target">/ 200g</div>
+                    </div>
+                    <div class="macro-item">
+                        <div class="macro-label">Fat</div>
+                        <div id="fatTotal" class="macro-value">0</div>
+                        <div class="macro-target">/ 65g</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="meal-section">
+                <h3>Meals</h3>
+                
+                <div class="meal-entry">
+                    <div class="meal-header">
+                        <h4>Pre-Workout</h4>
+                    </div>
+                    <div class="food-entry">
+                        <input type="text" placeholder="Food item" class="food-name">
+                        <input type="number" placeholder="Protein (g)" class="protein-input">
+                        <input type="number" placeholder="Carbs (g)" class="carb-input">
+                        <input type="number" placeholder="Fat (g)" class="fat-input">
+                        <input type="number" placeholder="Calories" class="calorie-input">
+                    </div>
+                    <button class="add-food-btn">+ Add Food</button>
+                </div>
+                
+                <div class="meal-entry">
+                    <div class="meal-header">
+                        <h4>Post-Workout</h4>
+                    </div>
+                    <div class="food-entry">
+                        <input type="text" placeholder="Food item" class="food-name">
+                        <input type="number" placeholder="Protein (g)" class="protein-input">
+                        <input type="number" placeholder="Carbs (g)" class="carb-input">
+                        <input type="number" placeholder="Fat (g)" class="fat-input">
+                        <input type="number" placeholder="Calories" class="calorie-input">
+                    </div>
+                    <button class="add-food-btn">+ Add Food</button>
+                </div>
+                
+                <div class="meal-entry">
+                    <div class="meal-header">
+                        <h4>Lunch</h4>
+                    </div>
+                    <div class="food-entry">
+                        <input type="text" placeholder="Food item" class="food-name">
+                        <input type="number" placeholder="Protein (g)" class="protein-input">
+                        <input type="number" placeholder="Carbs (g)" class="carb-input">
+                        <input type="number" placeholder="Fat (g)" class="fat-input">
+                        <input type="number" placeholder="Calories" class="calorie-input">
+                    </div>
+                    <button class="add-food-btn">+ Add Food</button>
+                </div>
+                
+                <div class="meal-entry">
+                    <div class="meal-header">
+                        <h4>Dinner</h4>
+                    </div>
+                    <div class="food-entry">
+                        <input type="text" placeholder="Food item" class="food-name">
+                        <input type="number" placeholder="Protein (g)" class="protein-input">
+                        <input type="number" placeholder="Carbs (g)" class="carb-input">
+                        <input type="number" placeholder="Fat (g)" class="fat-input">
+                        <input type="number" placeholder="Calories" class="calorie-input">
+                    </div>
+                    <button class="add-food-btn">+ Add Food</button>
+                </div>
+            </div>
+            
+            <div class="water-tracking">
+                <h3>Water Intake</h3>
+                <div class="water-progress">
+                    <div class="water-label">Target: 3-4L</div>
+                    <div class="water-glasses">
+                        <div class="water-glass" data-value="1"></div>
+                        <div class="water-glass" data-value="2"></div>
+                        <div class="water-glass" data-value="3"></div>
+                        <div class="water-glass" data-value="4"></div>
+                        <div class="water-glass" data-value="5"></div>
+                        <div class="water-glass" data-value="6"></div>
+                        <div class="water-glass" data-value="7"></div>
+                        <div class="water-glass" data-value="8"></div>
+                        <div class="water-glass" data-value="9"></div>
+                        <div class="water-glass" data-value="10"></div>
+                        <div class="water-glass" data-value="11"></div>
+                        <div class="water-glass" data-value="12"></div>
+                    </div>
+                    <div class="water-amount">0L / 3L</div>
+                </div>
+            </div>
+            
+            <button id="saveNutrition" class="save-btn">Save Nutrition Log</button>
+        </section>
+        
+        <!-- History Section -->
+        <section id="historySection" class="hidden-section">
+            <h2>View History</h2>
+            
+            <div class="date-selector">
+                <label for="historyDate">Select Date:</label>
+                <input type="date" id="historyDate">
+                <button id="loadHistoryBtn">Load Data</button>
+            </div>
+            
+            <div class="history-content">
+                <div class="history-tabs">
+                    <button id="historySkincare" class="active">Skincare</button>
+                    <button id="historyWorkout">Workout</button>
+                    <button id="historyNutrition">Nutrition</button>
+                </div>
+                
+                <div id="historyDisplay">
+                    <p>Select a date and click "Load Data" to view your history.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+    <script>
+        // Register service worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+              .then(function() { console.log('Service Worker Registered'); });
+        }
+    </script>
+</body>
+</html>
